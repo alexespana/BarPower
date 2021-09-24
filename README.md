@@ -17,4 +17,4 @@ El lenguaje de programación que se va a utilizar será python.
 3. [HUbar](https://github.com/alexespana/Proyecto-IV/issues/5)
 
 ## Material adicional
-[Archivo Markdown con la información adicional](https://github.com/alexespana/Proyecto-IV/docs/infoadicional.md)
+[Archivo Markdown con la información adicional](docs/infoadicional.md)
