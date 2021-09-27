@@ -25,3 +25,13 @@ una solución al problema que haga que la clientela aumente.
 
 2. Ana(cliente): mujer de más de 55 años, con un nivel de estudios superior (grado universitario), poco habituada al uso de aplicaciones móviles, apasionada a la gastronomía 
 mediterránea y muy crítica.
+
+### User-journeys
+A continuación, voy a explicar un poco más la situación del problema mediante user-jouneys (viaje al cliente).
+> "Como Juan Martín (dueño de un bar de la costa de Granada), me gustaría poder saber lo que a la mayoría de mis clientes les gusta consumir, ya sea 
+> bebida o comida, además, sería interesante que esto se mostrara de alguna forma gráfica. Muchas veces mis clientes no se muestran satisfechos 
+> con el menú y no sé qué servirles, me gustaría tener alguna especie de ayuda a la hora de elegir qué menú viene mejor para un día determinado."
+
+> "Como Ana Rodríguez (mujer de 55 años que suele visitar muchos bares), me gustaría que éstos tuvieran una aplicación donde la carta se pudiese ver con 
+> facilidad y con claridad, pudiendo buscar la comida que más me guste mediante el uso de etiquetas, por nombre de comida, los ingredientes que contengan. Para 
+> mí sería muy interesante que se pudiese ver el azúcar de cada comida, ya que soy diabética"
