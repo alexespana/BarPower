@@ -27,7 +27,7 @@ una solución al problema que haga que la clientela aumente.
 mediterránea y muy crítica.
 
 ### User-journeys
-A continuación, voy a explicar un poco más la situación del problema mediante user-jouneys (viaje al cliente).
+A continuación, voy a explicar un poco más la situación del problema mediante user-jouneys (viaje del cliente).
 > "Como Juan Martín (dueño de un bar de la costa de Granada), me gustaría poder saber lo que a la mayoría de mis clientes les gusta consumir, ya sea 
 > bebida o comida, además, sería interesante que esto se mostrara de alguna forma gráfica. Muchas veces mis clientes no se muestran satisfechos 
 > con el menú y no sé qué servirles, me gustaría tener alguna especie de ayuda a la hora de elegir qué menú viene mejor para un día determinado."
