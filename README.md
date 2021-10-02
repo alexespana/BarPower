@@ -4,9 +4,15 @@
 La idea de este proyecto será desarrollar un software para ayudar a maximizar la productividad, y por lo tanto la competitividad de los locales
 donde se sirva comida, ya sea bares, cafeterías, pizzerías, etc.
 
-La aplicación recogerá estadísticas sobre las conductas de los usuarios que visitan el local, de modo que el dueño de éste podrá obtener datos 
-objetivos sobre qué ofrecerles, incluso si algún día no tiene claro qué menú/productos ofrecer, la aplicación podrá generar una propuesta en función de 
-los datos estadísticos, siempre maximizando ganancias.
+A través de las visitas que se vayan realizando al bar, la aplicación irá registrando las comidas, meriendas o cenas que se produzcan, almacenando 
+datos como la hora del pedido, el pedido realizado y su precio, con lo que se podrá ofrecer al dueño del bar datos objetivos sobre qué ofrecer y 
+mejorar las ganancias del bar.
+
+Se entiende por maximizar las ganancias del bar como vender el mayor número de productos (a ser posible los más caros) en el menor tiempo posible, siempre
+por medio de la detección de la aplicación del momento en el que éstas se pueden maximizar atendiendo al tipo de pedidos que se realizan y la clasificación 
+que se hace de los clientes.
+ 
+En definitiva, se trata de aumentar el margen de beneficio que los dueños de los bares suelen tener.
 
 ## ¿Por qué hacer este proyecto? :bulb:
 Esta idea ha venido motivada principalmente porque en numerosas ocasiones he visto que bares, cafeterías, pizzerías, etc.., no 
