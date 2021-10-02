@@ -17,8 +17,8 @@ En definitiva, se trata de aumentar el margen de beneficio que los dueños de lo
 ## ¿Por qué hacer este proyecto? :bulb:
 Esta idea ha venido motivada principalmente porque en numerosas ocasiones he visto que bares, cafeterías, pizzerías, etc.., no 
 tenían una afluencia adecuada de clientes, no porque sirvieran mala comida sino porque no se preguntaban, ¿qué es lo que a 
-nuestros clientes les gusta?, ¿cuales son mis clientes potenciales?, ¿estamos a la moda?. Con este proyecto dichos problemas 
-podrían reducirse, aumentando así la productividad y competitividad de estos lugares.
+nuestros clientes les gusta?, ¿cuáles son los tipos de clientes con los que obtenemos mayor beneficio?. 
+Con este proyecto dichos problemas podrían reducirse, aumentando así la productividad y competitividad de estos lugares.
 
 ## Historias de usuario :busts_in_silhouette:
 Enlaces a las distintas historias de usuario (HU):
