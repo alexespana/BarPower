@@ -8,6 +8,7 @@ class Client:
         self.age = age
         self.region = region
         self.visits = []
+        self.products_consumed = []
 
 
     # Obtiene la propiedad Age de la entidad.
@@ -31,6 +32,10 @@ class Client:
     def get_visits(self):
         return self.visits
 
+    # Obtiene la propiedad Productos Consumidos de la clase.
+    def get_products_consumed(self):
+        return self.products_consumed
+
 
     # Añade una visita a un bar en una fecha determinada a la propiedad Visitas de la clase.
     # Si no se introduce ninguna fecha utilizará la fecha actual de inserción.
@@ -39,6 +44,13 @@ class Client:
             date = datetime.now()
 
         self.visits[date] = bar
+
+    # Añade un producto consumido a la propiedad Productos consumidos.
+    def add_product_consumed(self, product):
+        if product in self.products_consumed:
+            self.products_consumed[product] += 1
+        else:
+            self.products_consumed[product] = 1
 
 
     # Método para comprobar que la edad del cliente es correcta.
