@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Client:
 
     # Constructor por parámetros de la entidad.
@@ -5,6 +7,7 @@ class Client:
         Client.check_age(age)
         self.age = age
         self.region = region
+        self.visits = []
 
 
     # Obtiene la propiedad Age de la entidad.
@@ -23,6 +26,19 @@ class Client:
     # Establece la propiedad Region de la entidad.
     def set_region(self, region):
         self.region = region
+
+    # Obtiene la propiedad Visitas de la clase.
+    def get_visits(self):
+        return self.visits
+
+
+    # Añade una visita a un bar en una fecha determinada a la propiedad Visitas de la clase.
+    # Si no se introduce ninguna fecha utilizará la fecha actual de inserción.
+    def add_visit(self, bar, date = None):
+        if date == None:
+            date = datetime.now()
+
+        self.visits[date] = bar
 
 
     # Método para comprobar que la edad del cliente es correcta.
