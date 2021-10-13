@@ -20,14 +20,6 @@ class Client:
         Client.check_age(age)
         self.age = age
 
-    # Obtiene la propiedad Region de la entidad.
-    def get_region(self):
-        return self.region
-
-    # Establece la propiedad Region de la entidad.
-    def set_region(self, region):
-        self.region = region
-
     # Obtiene la propiedad Visitas de la clase.
     def get_visits(self):
         return self.visits
