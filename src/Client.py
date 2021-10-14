@@ -107,48 +107,6 @@ class Client:
         return self.products_consumed
 
 
-    def add_visit(self, bar, date = None):
-        """
-        Añade una nueva visita a las visitas del cliente.
-        Si no se introduce ninguna fecha utilizará la fecha actual de inserción.
-
-        Parameters
-        ----------
-        bar : string
-            Bar que ha visitado el cliente.
-        date : datetime
-            Fecha en la que se ha producido la visita al bar.
-
-        Returns
-        -------
-        None
-        """
-
-        if date == None:
-            date = datetime.now()
-
-        self.visits[date] = bar
-
-    def add_product_consumed(self, product):
-        """
-        Añade un nuevo producto a los productos consumidos.
-        Si el producto ya ha sido consumido en algún momento se incrementa la cantidad.
-
-        Parameters
-        ----------
-        product : string
-            Producto consumido a añadir.
-
-        Returns
-        -------
-        None
-        """
-        if product in self.products_consumed:
-            self.products_consumed[product] += 1
-        else:
-            self.products_consumed[product] = 1
-
-
     @staticmethod
     def check_age(age):
         """
