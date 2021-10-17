@@ -5,50 +5,39 @@ En este documento se encontrará toda la información necesaria para la consecuc
 Captura de pantalla donde se visualiza la creación de las [claves pública y privada](img/ssh-keygen.png) y correcta [configuración en github](img/SSHkeys.png)
 
 ## Documentación correspondiente al objetivo 1
-### Tipos de usuarios  
+### Tipos de usuarios que usarán la aplicación
 Esta aplicación tiene dos tipos de usuarios bien diferenciados:
-1. Dueño del local: es el usuario que hará un uso más intensivo de la aplicación. El cual quiere saber a través de la aplicación 
-qué es lo que sus clientes demandan y que la aplicación le pueda ofrecer datos objetivos como los productos más/menos consumidos según 
-el perfil de los clientes que los visitan, generar propuestas sobre qué ofrecer al cliente, etc
+1. Dueño del bar: es el usuario que hará un uso más intensivo de la aplicación. El cual quiere saber a través de la aplicación cuándo sus 
+clientes están demandando un mayor consumo de productos.
 
-2. Cliente: es el usuario que hará uso de la aplicación de forma previa o al acudir al local. Busca que la aplicación recoja 
-de forma fácil y sencilla sus preferencias gastronómicas para poder así disfrutar de un  mejor experiencia. En función de los menús que escoja 
-tenemos que tener en cuenta tres tipos de clientes:
-    1. Con alto poder adquisitivo: usuario que no tiene ningún tipo de problema al pagar las bebidas o platos más caros, siempre está abierto a 
-    sugerencias que le pueda ofrecer el dueño del bar, sin importar el precio.
-    2. Con un valor adquisitivo medio: este tipo de usuario suele visitar el bar ocasionalmente cuando quiere relajarse tomando unas copas, normalmente 
-    suele dejar una cantidad generosa de dinero. La mayoría suele ser gente de joven edad (personas entre los 19-25 años).
-    3. Con un bajo poder adquisitivo: usuario que visita el bar muy poco y que cuando lo visita intenta no gastar demasiada cantidad de dinero. Este
-    tipo de usuarios suelen repetir en numerosas ocasiones los mismos menús.
+2. Camareros: son usuarios que harán un uso de la aplicación en su jornada laboral, conforme los clientes vayan llegando al bar éste irá apuntando el tipo de cliente que llega según una clasificación de grupos de clientes, siempre bajo su propia suposición.
 
+### Clasificación de los clientes
+Son las personas que acuden al bar. Atendiendo el criterio propio del camarero que los atiende, los clientes podrán clasificarse en 
+cuatro grupos atendiendo el siguiente criterio:
+* Niño: persona de entre 5 y 15 años
+* Jóven: persona de entre 16 y 30 años
+* Adulto: persona de entre 31 y 65 años
+* Anciano: persona mayor de 65 años
 
-Para que los dueños de los locales puedan ver toda esta información acerca del cliente, la aplicación recogerá datos de 
-forma implícita. Datos como la hora de llegada al local, la fecha, el producto (entendiéndose como menú, plato, bebida, etc)
-seleccionado, etc
+### User-journey
+A continuación, voy a explicar más detalladamente en qué consiste el problema a resolver y cómo se puede llevar a cabo.
+El objetivo principal de la aplicación es ofrecer al dueño del bar o a los camareros indicaciones de qué tipo de clientes están realizando 
+un mayor consumo de productos(menús, platos, bebidas, postres, etc) en determinados tramos horarios del día y en tiempo real obviamente.
+
+Cuando un usuario o grupo de usuarios llega al bar, el camarero que los atiende anotará según su criterio, qué tipo de usuario/usuarios (de acuerdo a los tipos 
+especificados anteriormente) son, de esta forma se almacenará el tipo de usuarios y la hora a la que realizan la visita. Además, cuando un usuario realice un pedido, el 
+camarero anotará dicho pedido, quedando por lo tanto almacenado el pedido y la hora a la que se realiza. 
+
+De este modo, por un lado tendríamos los tipos de clientes que visitan el bar con sus respectivas horas de visita y por otro, los pedidos realizados y las horas 
+a las que estos se producen. Se pretende hacer predicciones sobre qué momentos se está realizando un mayor consumo de productos y qué tipo de clientes es más 
+probable que lo este realizando.
 
 ### Descripción de los usuarios
 1. Juan(dueño de un bar): varón de 30 años, con un nivel de estudios primario (ESO) y habituado al uso de 
-aplicaciones. Abrió el bar hace unos meses y está preocupado porque  no va mucha gente por el local. Está buscando 
-una solución al problema que haga que la clientela aumente.
+aplicaciones. Abrió el bar hace unos meses y está preocupado porque al haber gran cantidad de clientela no puede controlar bien en qué momento 
+es necesario cambiar el ambiente del bar o servir platos más apropiados según los clientes que tiene en el bar.
 
-2. Ana(cliente): mujer de más de 55 años, con un nivel de estudios superior (grado universitario), poco habituada al uso de aplicaciones móviles, apasionada a la gastronomía 
-mediterránea y muy crítica.
-
-### User-journeys
-A continuación, voy a explicar un poco más la situación del problema mediante user-jouneys (viaje del cliente).
-> "Como Juan Martín (dueño de un bar de la costa de Granada), me gustaría poder saber lo que a la mayoría de mis clientes les gusta consumir, ya sea 
-> bebida o comida, además, sería interesante que esto se mostrara de alguna forma gráfica. Muchas veces mis clientes no se muestran satisfechos 
-> con el menú y no sé qué servirles, me gustaría tener alguna especie de ayuda a la hora de elegir qué menú viene mejor para un día determinado."
-
-> "Como Ana Rodríguez (mujer de 55 años que suele visitar muchos bares), me gustaría que éstos tuvieran una aplicación donde la carta se pudiese ver con 
-> facilidad y con claridad, pudiendo buscar la comida que más me guste mediante el uso de etiquetas, por nombre de comida, los ingredientes que contengan. Para 
-> mí sería muy interesante que se pudiese ver el azúcar de cada comida, ya que soy diabética"
-
-> "Como Juan Martín (dueño de un bar de la costa de Granada), me gustaría saber qué clientes de los que están actualmente en el bar son los que más 
-> dinero pueden llegar a gastarse en comer. Sería muy interesante tener una estimación de cuál es el mejor momento en el que debo pasar a cambiar 
-> el ambiente del bar y ofrecer otros productos como bebidas(copas) y meriendas"
-
-
-Cuando un cliente llega al bar, éste realizará una búsqueda sobre el plato que desea consumir. Al realizar la selección y encargo del plato/menú, este quedará 
-registrado, haciendo que el sistema a partir del precio del producto determine si se trata de un cliente con un valor adquisitivo alto, medio o bajo. En función de esto
-y en la hora de realización del pedido se hará una estimación de la edad del cliente.
+2. Ana (camarera): chica de 20 años, ha empezado a trabajar hace pocos meses y no tiene muy claro las preferencias que tienen los clientes, (sobre todo adultos y ancianos) 
+a la hora de hacerles una petición de lo que pueden consumir. Le gustaría que la aplicación con los datos actuales del bar le hiciera una sugerencia (predicción) de qué es más 
+probable que se consuma en función del cliente que sea.
