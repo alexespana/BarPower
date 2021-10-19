@@ -47,7 +47,8 @@ class Visits:
         None
         """
         
-        if client_type != "ninio" or client_type != "joven" or client_type != "adulto" or client_type != "anciano":
+        clients_type = ["ninio", "joven", "adulto", "anciano"]
+        if (client_type in clients_type) == False:
             raise AttributeError("El tipo de cliente especificado no es correcto.")
         elif time < 0 or time > 23:
             raise AttributeError("La hora especificado no es correcta.")
