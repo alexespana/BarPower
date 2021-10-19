@@ -1,4 +1,4 @@
-from datetime import *
+from datetime import datetime
 
 class Visits:
     """
@@ -50,14 +50,8 @@ class Visits:
         clients_type = ["ninio", "joven", "adulto", "anciano"]
         if (client_type in clients_type) == False:
             raise AttributeError("El tipo de cliente especificado no es correcto.")
-        elif time < 0 or time > 23:
-            raise AttributeError("La hora especificado no es correcta.")
-        elif time == None:
-            hour = "%s:00" % (datetime.now.hour)
-        elif time < 10:
-            hour = "0%s:00" % (time)
-        else:
-            hour = "%s:00" % (time)
+
+        hour = self.get_hour_from_time(time)
 
         self.initialize_hour(hour)
 
@@ -83,14 +77,7 @@ class Visits:
         None
         """
 
-        if time < 0 or time > 23:
-            raise AttributeError("La hora especificado no es correcta.")
-        elif time == None:
-            hour = "%s:00" % (datetime.now.hour)
-        elif time < 10:
-            hour = "0%s:00" % (time)
-        else:
-            hour = "%s:00" % (time)
+        hour = self.get_hour_from_time(time)
 
         self.initialize_hour(hour)
 
@@ -113,7 +100,6 @@ class Visits:
         Returns
         -------
         None
-
         """
         if hour not in self.data:
             self.data[hour] = {
@@ -126,5 +112,33 @@ class Visits:
                 "products_consumed" : {}
             }
         
+
+    @staticmethod
+    def get_hour_from_time(time):
+        """
+        Obtiene la hora en formato string del argumento pasado por parámetros.
+        Si el parámetro time no es entero se usará la hora actual.
+
+        Parameters
+        ----------
+        time : int
+            Hora a transformar en string.
+
+        Returns
+        -------
+        hour : str
+            Hora en formato string obtenida.
+        """
+        
+        if not isinstance(time, int):
+            hour = "%s:00" % (datetime.now().hour)
+        elif time < 0 or time > 23:
+            raise AttributeError("La hora especificado no es correcta.")
+        elif time < 10:
+            hour = "0%s:00" % (time)
+        else:
+            hour = "%s:00" % (time)
+
+        return hour
 
 
