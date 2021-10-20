@@ -22,10 +22,10 @@ Con este proyecto dichos problemas podrían reducirse, aumentando así la produc
 
 ## Historias de usuario :busts_in_silhouette:
 Enlaces a las distintas historias de usuario (HU):
-* [[HU1]. Productos más consumidos en función del cliente](https://github.com/alexespana/Proyecto-IV/issues/3)
-* [[HU2]. Afluencia de clientela](https://github.com/alexespana/Proyecto-IV/issues/4)
-* [[HU3]. Propuesta de productos](https://github.com/alexespana/Proyecto-IV/issues/5)
-* [[HU4]. Búsqueda de comidas](https://github.com/alexespana/Proyecto-IV/issues/7)
+* [[HU1]. Anotar clientes y comandas](https://github.com/alexespana/BarPower/issues/9)
+* [[HU2]. Predicción de jóvenes](https://github.com/alexespana/BarPower/issues/10)
+* [[HU3]. Productos más consumidos en función del cliente](https://github.com/alexespana/BarPower/issues/3)
+* [[HU4]. Predicción de ancianos](https://github.com/alexespana/BarPower/issues/4)
 
 ## Documentación :books:
 [Enlace a documentación](docs/documentacion.md)
