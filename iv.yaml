@@ -3,3 +3,4 @@ entidad: bar_power/Visits.py
 automatizar:
   fichero: tasks.py
   orden: invoke
+  
