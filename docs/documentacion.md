@@ -41,3 +41,12 @@ es necesario cambiar el ambiente del bar o servir platos más apropiados según 
 2. Ana (camarera): chica de 20 años, ha empezado a trabajar hace pocos meses y no tiene muy claro las preferencias que tienen los clientes, (sobre todo adultos y ancianos) 
 a la hora de hacerles una petición de lo que pueden consumir. Le gustaría que la aplicación con los datos actuales del bar le hiciera una sugerencia (predicción) de qué es más 
 probable que se consuma en función del cliente que sea.
+
+## Documentación correspondiente al objetivo 3
+### Elección del task runner y del gestor de dependencias 
+Makefile es uno de los gestores de tareas más simples y conocidos por ser una herramienta genérica, sin embargo, dado que python tiene su task runner específico **invoke** 
+he decidido usar éste. Además, éste proporciona una API limpia y fácil de entender (de alto nivel) para organizar tareas.
+
+La principal razón de **poetry** como gestor de dependencias es que tiene una [documentación](https://python-poetry.org/) muy buena y clara, tiene una fácil configuración del archivo principal (**pyproject.toml**) y permite añadir las dependencias automáticamente con simplemente incluir el comando poetry add \<dependencia>.
+
+Con respecto a la herramienta para comprobar la sintaxis de los archivos python, se planteó utilizar **pylint** ya que tiene muchas funcionalidades como comprobador de sintaxis, comprobador de estilo de acuerdo a PEP8 y demás, sin embargo, a la hora de ejecutarlo desde invoke daba problemas ya que poetry tiene su propio entorno e instalaba pylint en su entorno, por lo que tendríamos que decirle a invoke que ejecutase pylint desde el entorno de poetry. Dado que el único objetivo de la orden check es comprobar si los archivos compilan, se ha optado por usar la opción más sencilla, **py3compile**.
