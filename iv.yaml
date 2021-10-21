@@ -1,5 +1,5 @@
 lenguaje: python
 entidad: bar_power/Visits.py
 automatizar:
-  fichero: task.py
+  fichero: tasks.py
   orden: invoke
