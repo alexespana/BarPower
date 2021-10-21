@@ -27,5 +27,57 @@ Enlaces a las distintas historias de usuario (HU):
 * [[HU3]. Productos más consumidos en función del cliente](https://github.com/alexespana/BarPower/issues/3)
 * [[HU4]. Predicción de ancianos](https://github.com/alexespana/BarPower/issues/4)
 
-## Documentación :books:
+## Task runners y gestores de dependencias
+Para este proyecto se ha decidido utilizar **invoke** como gestor de tareas y **poetry** como gestor de dependencias. La justificación
+de la elección se puede ver reflejada en la documentación adicional al final del documento.
+
+### Invoke
+Para la instalación de invoke en Linux debes abrir una terminal y ejecutar el siguiente comando:
+
+    pip install invoke
+
+
+Si quieres comprobar que se ha instalado correctamente ejecuta en la terminal:
+
+    invoke --version
+
+Comandos obtenidos de la [documentación](https://www.pyinvoke.org/installing.html) de invoke.
+
+### Poetry
+Para la instalación de poetry en Linux debes abrir una terminal y ejecutar el siguiente comando:
+
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+Si quieres comprobar que se ha instalado correctamente, abre una nueva terminal y ejecuta:
+
+    poetry --version
+
+Comandos obtenidos de la [documentación](https://python-poetry.org/docs/#installation) de poetry.
+
+### Clase Visits
+Esta clase almacenará la información relativa a las visitas que realizan los clientes a lo largo del día en el local. Almacenará los 
+tipos de clientes que estén en un momento dado en el bar junto a las horas de llegada, además, almacenará las distintas comandas 
+que se realizan por parte de los clientes junto a las horas que se realizan. Esta clase será la encargada de dar toda la lógica de 
+negocio de la aplicación, realizando predicciones(usando un teorema probabilístico de Bayes) acerca de la futura presencia de 
+determinados tipos de clientes y generando informes sobre los productos más consumidos según tipo de cliente.
+
+Para instalar la clase debes ejecutar:
+
+    invoke install
+
+Para instalar las dependencias necesarias ejecutar:
+    
+    invoke installdeps
+
+
+Para comprobar que el resultado de la ejecución es correcto ejecutar:
+
+    invoke test
+
+
+Para comprobar la sintaxis de esta clase debes ejecutar:
+    
+    invoke check
+
+## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
