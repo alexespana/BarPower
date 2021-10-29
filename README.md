@@ -28,20 +28,8 @@ Enlaces a las distintas historias de usuario (HU):
 * [[HU4]. Predicción de ancianos](https://github.com/alexespana/BarPower/issues/4)
 
 ## Task runners y gestores de dependencias
-Para este proyecto se ha decidido utilizar **invoke** como gestor de tareas y **poetry** como gestor de dependencias. La justificación
+Para este proyecto se ha decidido utilizar **poethepoet** como gestor de tareas y **poetry** como gestor de dependencias. La justificación
 de la elección se puede ver reflejada en la documentación adicional al final del documento.
-
-### Invoke
-Para la instalación de invoke en Linux debes abrir una terminal y ejecutar el siguiente comando:
-
-    pip install invoke
-
-
-Si quieres comprobar que se ha instalado correctamente ejecuta en la terminal:
-
-    invoke --version
-
-Comandos obtenidos de la [documentación](https://www.pyinvoke.org/installing.html) de invoke.
 
 ### Poetry
 Para la instalación de poetry en Linux debes abrir una terminal y ejecutar el siguiente comando:
@@ -54,6 +42,22 @@ Si quieres comprobar que se ha instalado correctamente, abre una nueva terminal 
 
 Comandos obtenidos de la [documentación](https://python-poetry.org/docs/#installation) de poetry.
 
+### Poethepoet
+Para que poethepoet funcione dentro del entorno de poetry es necesario abrir una terminal y ejecutar el siguiente comando:
+
+    poetry add --dev poethepoet
+
+Para la instalación de poethepoet en tu entorno de python por defecto debes abrir una terminal y ejecutar el siguiente comando:
+
+    pip install poethepoet
+
+Si quieres comprobar que se ha instalado correctamente ejecuta en la terminal:
+
+    poe --version
+
+Comandos obtenidos de la [documentación](https://pypi.org/project/poethepoet/) de poethepoet.
+
+
 ### Clase Visits
 Esta clase almacenará la información relativa a las visitas que realizan los clientes a lo largo del día en el local. Almacenará los 
 tipos de clientes que estén en un momento dado en el bar junto a las horas de llegada, además, almacenará las distintas comandas 
@@ -63,21 +67,20 @@ determinados tipos de clientes y generando informes sobre los productos más con
 
 Para instalar la clase debes ejecutar:
 
-    invoke install
+    poe install
 
 Para instalar las dependencias necesarias ejecutar:
     
-    invoke installdeps
-
+    poe installdeps
 
 Para comprobar que el resultado de la ejecución es correcto ejecutar:
 
-    invoke test
-
+    poe test
 
 Para comprobar la sintaxis de esta clase debes ejecutar:
     
-    invoke check
+    poe check
+
 
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
