@@ -8,6 +8,14 @@ authors = ["Joaquín Alejandro España Sánchez <joaquinalejandroespana@gmail.co
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
+poethepoet = "^0.10.0"
+
+[tool.poe.tasks]
+install         = {cmd="echo Intalling the program...not yet available", help="Instala las distintas clases o módulos que tenga el proyecto"}
+installdeps     = {cmd="poetry install", help="Instala las dependencias necesarias para que la aplicación funcione"}
+test            = {cmd="echo Making tests....not yet available", help="Comprueba que el resultado del programa sea el correcto"}
+check           = {cmd="py3compile bar_power/*.py", help="Comprueba la sintaxis de los ficheros python"}
+clean           = {cmd="rm -rf ./**/__pycache__"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
