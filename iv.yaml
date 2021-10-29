@@ -1,6 +1,6 @@
 lenguaje: python
 entidad: bar_power/Visits.py
 automatizar:
-  fichero: tasks.py
-  orden: invoke
+  fichero: pyproject.toml
+  orden: poe
   
