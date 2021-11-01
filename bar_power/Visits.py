@@ -154,3 +154,36 @@ class Visits:
             hour = "%s:00" % (time)
 
         return hour
+
+    def make_prediction(self,client_type):
+        """
+        Este método hará una predicción haciendo uso del teorema de Bayes para 
+        estimar la hora de llegada más probable del tipo de cliente pasado como
+        parámetro
+
+        Parameters
+        ----------
+        client_type: str
+            Tipo de cliente del que se quiere estimar la hora de llegada
+
+        Returns
+        --------
+        hour: int
+            Hora de llegada obtenida a partir de la predicción
+        """
+        pass
+        
+    def products_more_consumed(self):
+        """
+        Este método permite saber cuales son los productos más y menos 
+        consumidos en función del cliente. Hará uso de los vectores v_visits 
+        y v_orders para hacer una asociación entre los elementos de los arrays
+
+        Returns
+        --------
+        m: matriz de str (4 x (num_productos))
+            Matriz con 4 filas (una por cada tipo de cliente) donde cada
+            una tendrá los productos ordenados de menos a más consumidos 
+            según el tipo de cliente.
+        """
+        pass
