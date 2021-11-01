@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import bar_power.Visit, bar_power.Order
 
 class Visits:
     """
@@ -12,6 +12,12 @@ class Visits:
     data : dict
         Datos las visitas al bar de distintos tipos de clientes y las comandas
         que se hacen en unas franjas horarias.
+    v_visits: list of Visit
+        Lista de objetos tipo Visit donde se almacenarán las horas de las visitas
+        y el tipo de cliente que las realiza
+    v_orders: list of Command
+        Lista de objetos tipo Order donde se almacenarán las comandas que piden 
+        los usuarios junto con las horas a las que se realizan
 
     Methods
     -------
@@ -29,6 +35,8 @@ class Visits:
         """
 
         self.data = {}
+        self.v_visits = []
+        self.v_orders = []
 
     def add_visit(self, client_type: str, time: int = None):
         """
@@ -61,6 +69,8 @@ class Visits:
 
         self.data[hour]["clients_type"][client_type] += 1
 
+        self.v_visits.append(bar_power.Visit.Visit(hour, client_type))
+
     def add_product_consumed(self, product: str, time: int = None):
         """
         Añade un producto consumido a la propiedad Data en la franja horaria
@@ -90,6 +100,8 @@ class Visits:
         else:
             self.data[hour]["products_consumed"][product] = 1
 
+        self.v_orders.append(bar_power.Order.Order(hour, product))
+        
     def initialize_hour(self, hour: str):
         """
         Método para inicializar una hora en la propiedad data.
