@@ -6,16 +6,17 @@ authors = ["Joaquín Alejandro España Sánchez <joaquinalejandroespana@gmail.co
 
 [tool.poetry.dependencies]
 python = "^3.8"
+pytest = "^6.2.5"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"
 
 [tool.poe.tasks]
-install         = {cmd="echo Intalling the program...not yet available", help="Instala las distintas clases o módulos que tenga el proyecto"}
+install         = {cmd="python3 bar_power/*.py", help="Instala las distintas clases o módulos que tenga el proyecto"}
 installdeps     = {cmd="poetry install", help="Instala las dependencias necesarias para que la aplicación funcione"}
-test            = {cmd="echo Making tests....not yet available", help="Comprueba que el resultado del programa sea el correcto"}
+test           = {cmd="pytest tests/test_visits.py", help="Comprueba que el resultado(comportamiento) del programa sea el correcto"}
 check           = {cmd="py3compile bar_power/*.py", help="Comprueba la sintaxis de los ficheros python"}
-clean           = {cmd="rm -rf ./**/__pycache__"}
+clean           = {cmd="rm -rf .pytest_cache ./**/__pycache__"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
