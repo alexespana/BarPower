@@ -3,4 +3,4 @@ entidad: bar_power/Visits.py
 automatizar:
   fichero: pyproject.toml
   orden: poe
-  
+test: tests/test_visits.py
