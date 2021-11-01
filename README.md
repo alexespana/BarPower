@@ -81,6 +81,32 @@ Para comprobar la sintaxis de esta clase debes ejecutar:
     
     poe check
 
+Si desea visualizar las tareas disponibles puede ejecutar:
+
+    poe --help
+
+### ¿Por qué usar pytest para testear?
+A la hora de la elección del marco de pruebas se planteó la elección de unittest, sin embargo, este marco de prueba tiene una sintaxis más compleja 
+y menos legible en comparación con pytest. En el caso de unittest, para testear tendría que crearse una subclase de unittest.TestCase (es decir, que 
+heredase de ella), por lo que tendríamos que depender de ello.
+
+El marco de prueba **pytest** tiene una sintaxis más simple, incluye mayor información en el caso de fallo de los tests, y además incluye lo que se 
+denominan **fixtures**, que son objetos que si no se crean correctamente, indican que algo va mal, pero si se crean correctamente, se usan como base 
+para los tests posteriores. Con respecto a la biblioteca de aserciones se ha decidido usar la de pytest, que comprueba que la expresión pasada como 
+argumento es cierta con simplemente hacer **assert <expresion lógica>**
+
+### Fases de test: setup, test y teardown
+En este caso, se va a testear la clase Visits. Voy a explicar el procedimiento que seguiremos para realizar los test:
+* **Setup**: en esta fase se crean los objetos necesarios para llevar a cabo los test. En nuestro caso, se crea un fixture que será **visits** 
+en la función visits(). Si la creación de este objeto se realiza correctamente, será la base para los test siguientes.
+* **Tests**: sobre el fixture creado en la fase de setup se llevarán a cabo los tests. Recordar que estos test son independientes de la 
+implementación, por lo que debe comprobar comportamiento.
+* **Teardown**: en esta fase se eliminan todos los archivos temporales(\__pycache__, .pytest_cache) y se deja al sistema en el estado inicial, para
+ello se puede usar la orden **poe clean**.
+
+Como hemos indicado anteriormente, para realizar los test hay que ejecutar:
+
+    poe test
 
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
