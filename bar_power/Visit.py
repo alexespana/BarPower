@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from bar_power.ClientType import ClientType
 
 @dataclass(frozen=True)     # Cualquier asignación producirá una excepción
 class Visit:                # del tipo dataclasses.FrozenInstanceError
@@ -14,4 +15,4 @@ class Visit:                # del tipo dataclasses.FrozenInstanceError
         Tipo de cliente que ha realizado la visita.
     """
     time: int
-    client_type: str
+    client_type: ClientType
