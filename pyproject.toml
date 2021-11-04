@@ -14,9 +14,10 @@ poethepoet = "^0.10.0"
 [tool.poe.tasks]
 install         = {cmd="python3 bar_power/*.py", help="Instala las distintas clases o módulos que tenga el proyecto"}
 installdeps     = {cmd="poetry install", help="Instala las dependencias necesarias para que la aplicación funcione"}
-test           = {cmd="pytest tests/test_visits.py", help="Comprueba que el resultado(comportamiento) del programa sea el correcto"}
+pytest          = {cmd="pytest tests/test_visits.py", help="Comprueba que el resultado(comportamiento) del programa sin fase de Teardown"}
 check           = {cmd="py3compile bar_power/*.py", help="Comprueba la sintaxis de los ficheros python"}
-clean           = {cmd="rm -rf .pytest_cache ./**/__pycache__"}
+test            = ["pytest", "clean"]
+clean           = {cmd="rm -rf .pytest_cache ./**/__pycache__ ./**/__init__.pyc"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
