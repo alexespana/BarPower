@@ -1,5 +1,7 @@
 from datetime import datetime
-import bar_power.Visit, bar_power.Order
+from bar_power.Order import *
+from bar_power.Visit import *
+from bar_power.ClientType import *
 
 class Visits:
     """
@@ -10,8 +12,8 @@ class Visits:
     Attributes
     ----------
     data : dict
-        Datos las visitas al bar de distintos tipos de clientes y las comandas
-        que se hacen en unas franjas horarias.
+        Resumen global de las visitas que se van realizando a lo largo del día
+        por los clientes: tramos horarios, tipos de clientes y productos
     v_visits: list of Visit
         Lista de objetos tipo Visit donde se almacenarán las horas de las visitas
         y el tipo de cliente que las realiza
@@ -38,7 +40,7 @@ class Visits:
         self.v_visits = []
         self.v_orders = []
 
-    def add_visit(self, client_type: str, time: int = None):
+    def add_visit(self, client_type: ClientType, time: int = None):
         """
         Añade una visita a la propiedad Data en la franja horaria que le
         corresponda.
@@ -49,7 +51,7 @@ class Visits:
 
         Parameters
         ----------
-        client_type : str
+        client_type : ClientType
             Tipo de cliente que ha visitado el bar
         time : int
             Hora en la que se ha producido la visita.
@@ -58,10 +60,8 @@ class Visits:
         -------
         None
         """
-        clients_type = ["ninio", "joven", "adulto", "anciano"]
-        if (client_type in clients_type) is False:
-            raise AttributeError("El tipo de cliente especificado no \
-                                  es correcto.")
+        if type(client_type) != ClientType:
+            raise AttributeError("El tipo de cliente especificado no es correcto.")
 
         hour = self.get_hour_from_time(time)
 
@@ -69,7 +69,7 @@ class Visits:
 
         self.data[hour]["clients_type"][client_type] += 1
 
-        self.v_visits.append(bar_power.Visit.Visit(hour, client_type))
+        self.add_visit_done(hour, client_type)
 
     def add_product_consumed(self, product: str, time: int = None):
         """
@@ -100,8 +100,8 @@ class Visits:
         else:
             self.data[hour]["products_consumed"][product] = 1
 
-        self.v_orders.append(bar_power.Order.Order(hour, product))
-        
+        self.add_order_done(hour, product)
+
     def initialize_hour(self, hour: str):
         """
         Método para inicializar una hora en la propiedad data.
@@ -119,13 +119,41 @@ class Visits:
         if hour not in self.data:
             self.data[hour] = {
                 "clients_type": {
-                    "ninio": 0,
-                    "joven": 0,
-                    "adulto": 0,
-                    "anciano": 0,
+                    ClientType.ninio: 0,
+                    ClientType.joven: 0,
+                    ClientType.adulto: 0,
+                    ClientType.anciano: 0,
                 },
                 "products_consumed": {}
             }
+
+    def add_visit_done(self, hour: int, client_type: ClientType):
+        """
+        Añade una visita a las visitas realizadas
+
+        Parameters
+        ----------
+        hour : str
+            Hora en la que llega el cliente
+        client_type : ClientType
+            Tipo de cliente
+        """
+        visit = Visit(hour, client_type)
+        self.v_visits.append(visit)
+
+    def add_order_done(self, hour: int, product: str):
+        """
+        Añade una producto a las comandas realizadas
+
+        Parameters
+        ----------
+        hour : str
+            Hora en la que se realiza el pedido
+        product : str
+            Producto consumido
+        """
+        order = Order(hour, product)
+        self.v_orders.append(order)
 
     @staticmethod
     def get_hour_from_time(time):
@@ -155,7 +183,7 @@ class Visits:
 
         return hour
 
-    def make_prediction(self,client_type):
+    def make_prediction(self,client_type: ClientType):
         """
         Este método hará una predicción haciendo uso del teorema de Bayes para 
         estimar la hora de llegada más probable del tipo de cliente pasado como
@@ -163,7 +191,7 @@ class Visits:
 
         Parameters
         ----------
-        client_type: str
+        client_type: ClientType
             Tipo de cliente del que se quiere estimar la hora de llegada
 
         Returns
