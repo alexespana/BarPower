@@ -61,7 +61,7 @@ class Visits:
         None
         """
         if type(client_type) != ClientType:
-            raise AttributeError("El tipo de cliente especificado no es correcto.")
+            raise TypeError("El tipo de cliente especificado no es correcto.")
 
         hour = self.get_hour_from_time(time)
 
@@ -175,7 +175,7 @@ class Visits:
         if not isinstance(time, int):
             hour = "%s:00" % (datetime.now().hour)
         elif time < 0 or time > 23:
-            raise AttributeError("La hora especificado no es correcta.")
+            raise ValueError("La hora especificada no es correcta.")
         elif time < 10:
             hour = "0%s:00" % (time)
         else:
