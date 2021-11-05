@@ -7,6 +7,10 @@ class ClientType(enum.Enum):
     Contiene los tipos de cliente disponibles
     """
     ninio = 1
-    joven = 2
-    adulto = 3
-    anciano = 4
+    jovencopas = 2
+    joventurista = 3
+    adultocopas = 4
+    adultoturista = 5
+    adultosaludable = 6
+    ancianobingo = 7
+    ancianobebedor = 8
