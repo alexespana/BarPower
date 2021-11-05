@@ -120,9 +120,13 @@ class Visits:
             self.data[hour] = {
                 "clients_type": {
                     ClientType.ninio: 0,
-                    ClientType.joven: 0,
-                    ClientType.adulto: 0,
-                    ClientType.anciano: 0,
+                    ClientType.jovencopas: 0,
+                    ClientType.joventurista: 0,
+                    ClientType.adultocopas: 0,
+                    ClientType.adultosaludable: 0,
+                    ClientType.adultoturista: 0,
+                    ClientType.ancianobingo: 0,
+                    ClientType.ancianobebedor: 0,
                 },
                 "products_consumed": {}
             }
