@@ -4,7 +4,7 @@ from bar_power.ClientType import *
 
 HOUR = 19
 PRODUCT = 'paella'
-CLIENT_TYPE = ClientType.joven
+CLIENT_TYPE = ClientType.jovencopas
 HOUR_WITH_FORMAT = Visits.get_hour_from_time(HOUR)  # 19:00
 
 @pytest.fixture
