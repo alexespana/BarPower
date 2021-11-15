@@ -16,7 +16,7 @@ jobs:
       # https://github.com/marketplace/actions/dockerhub-readme
         uses: ms-jpq/sync-dockerhub-readme@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASS }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/BarPower
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASS }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/barpower
           readme: "./README.md"
