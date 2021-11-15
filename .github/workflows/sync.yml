@@ -11,11 +11,10 @@ on:
 jobs:
   sincroniza:
     runs-on: ubuntu-latest
-
     steps:
       - name: Sincronizar readme Github con Dockerhub
       # https://github.com/marketplace/actions/dockerhub-readme
-      - uses: ms-jpq/sync-dockerhub-readme@v1
+        uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASS }}
