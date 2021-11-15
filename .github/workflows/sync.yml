@@ -18,5 +18,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASS }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/barpower
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/BarPower
           readme: "./README.md"
