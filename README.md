@@ -108,5 +108,23 @@ Como hemos indicado anteriormente, para realizar los test hay que ejecutar:
 
     poe test
 
+### Contenedor para pruebas
+Para la creación de nuestro contenedor de pruebas se han seguido una serie de pasos reflejados en la creación del archivo Dockerfile. Como contenedor 
+base se ha elegido el oficial de python, en la versión 3.8, ya que nuestro código fuente está compilado con dicha versión. Lo primero que necesitamos 
+para realizar los test correctamenete dentro de la imagen es tener instaladas las herramientas necesarias para ello, por lo que hemos instalado el task 
+runner y el gestor de dependencias (poetthepoet y poetry respectivamente). Además, necesitamos que el archivo **pyproject.toml** esté incluido en la
+carpeta /app/test que montamos en nuestra imagen, ya que de aquí obtendrá las dependencias (como pytest) que hagan falta para ejecutar los test. 
+Posteriormente, como acabamos de mencionar, instalamos los módulos/bibliotecas de test a través del task runner. Finalmente, ejecutamos los test a través 
+del task runner. 
+
+#### ¿Cómo probarlo?
+Para probar el correcto funcionamiento del contenedor deberemos descargar este repositorio  y ejecutar dentro de la carpeta raíz del mismo lo siguiente:
+
+    docker run -t -v `pwd`:/app/test alexespana/barpower
+
+En este comando, la opción -t indica cómo Unix/Linux maneja el acceso a la terminal y la opción -v concretamente lo que hace es montar el directorio
+local en el que se encuentra a la carpeta /app/test de la imagen, es por esta razón que no ha sido necesario incluir ningún fichero de test ni código fuente 
+en la creación de la imagen. La imagen se encuentra almacenada en Dockerhub y puedes acceder a ella [aquí](https://hub.docker.com/r/alexespana/barpower).
+
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
