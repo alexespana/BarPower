@@ -12,10 +12,13 @@ jobs:
   sincroniza:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    
-    - uses: meeDamian/sync-readme@v1.0.6
-      with:
-        pass: ${{ secrets.DOCKER_PASS }}
-        description: true
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Sincronizar readme Github con Dockerhub
+      # https://github.com/marketplace/actions/dockerhub-readme
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASS }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/barpower
+          readme: "./README.md"
