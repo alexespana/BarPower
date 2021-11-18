@@ -2,11 +2,8 @@ name: Sincronizar Readme
 
 on:
   push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+    paths:
+    - "README.md"
 jobs:
   sincroniza:
     runs-on: ubuntu-latest
