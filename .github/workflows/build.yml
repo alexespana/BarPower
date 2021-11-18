@@ -2,11 +2,9 @@ name: Actualización contenedor
 
 on:
   push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+    paths:
+    - "Dockerfile"
+    - "pyproject.toml"
 jobs:
   actualiza:
     runs-on: ubuntu-latest
