@@ -20,9 +20,12 @@ COPY pyproject.toml /app/test/
 # como poe por ejemplo
 ENV PATH="$PATH:/home/dockertest/.local/bin:${PATH}"
 
+# Mejorar la versión de pip: eliminar warnings
+RUN /usr/local/bin/python -m pip install --upgrade pip
+
 # Instalar herramientas necesarias para el proyecto (poetry y poethepoet)
-RUN pip install poetry && \
-    pip install poethepoet
+RUN pip3 install poetry && \
+    pip3 install poethepoet
 
 # Instalar dependencias declaradas en el archivo pyproject.toml mediante el task runner
 RUN poe installdeps
