@@ -110,12 +110,15 @@ Como hemos indicado anteriormente, para realizar los test hay que ejecutar:
 
 ### Contenedor para pruebas
 Para la creación de nuestro contenedor de pruebas se han seguido una serie de pasos reflejados en la creación del archivo Dockerfile. Como contenedor 
-base se ha elegido el oficial de python, en la versión 3.8, ya que nuestro código fuente está compilado con dicha versión. Lo primero que necesitamos 
-para realizar los test correctamenete dentro de la imagen es tener instaladas las herramientas necesarias para ello, por lo que hemos instalado el task 
-runner y el gestor de dependencias (poetthepoet y poetry respectivamente). Además, necesitamos que el archivo **pyproject.toml** esté incluido en la
-carpeta /app/test que montamos en nuestra imagen, ya que de aquí obtendrá las dependencias (como pytest) que hagan falta para ejecutar los test. 
-Posteriormente, como acabamos de mencionar, instalamos los módulos/bibliotecas de test a través del task runner. Finalmente, ejecutamos los test a través 
-del task runner. 
+base se ha elegido el oficial de python, en la versión 3.8, ya que es la última versión de python que no está en [modo de corrección de errores](https://devguide.python.org/devcycle/) 
+(lo que la hace una versión estable). Lo primero que necesitamos para realizar los test correctamenete dentro de la imagen es tener instaladas las 
+herramientas necesarias para ello, por lo que hemos instalado el task runner y el gestor de dependencias (poetthepoet y poetry respectivamente). Además, 
+necesitamos que el archivo **pyproject.toml** esté incluido en una carpeta de la imagen, ya que de aquí obtendrá las dependencias (como pytest) que hagan
+falta para ejecutar los test. Posteriormente, como acabamos de mencionar, instalamos los módulos/bibliotecas de test a través del task runner. Finalmente, 
+ejecutamos los test a través del task runner. 
+
+Al crear la imagen del contenedor he observado que el tamaño de ésta era excesivamente grande (992MB), por lo que he optado por usar una variante contenedor 
+base de python más ligera, **python slim**, consiguiendo reducir el tamaño de la imagen significativamente (204MB), haciéndola más ligera.
 
 #### ¿Cómo probarlo?
 Para probar el correcto funcionamiento del contenedor deberemos descargar este repositorio  y ejecutar dentro de la carpeta raíz del mismo lo siguiente:
