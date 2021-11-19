@@ -1,4 +1,4 @@
-FROM python:3.8     
+FROM python:3.8-slim
 LABEL version="0.0.7" maintainer="joaquinalejandroespana@gmail.com"
 
 # Crear usuario que ejecutará el contenedor y el grupo al que pertenece
