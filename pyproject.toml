@@ -14,7 +14,7 @@ poethepoet = "^0.10.0"
 [tool.poe.tasks]
 install         = {cmd="python3 bar_power/*.py", help="Instala las distintas clases o módulos que tenga el proyecto"}
 installdeps     = {cmd="poetry install", help="Instala las dependencias necesarias para que la aplicación funcione"}
-pytest          = {cmd="pytest -p no:cacheprovider tests/test_visits.py", help="Comprueba que el resultado(comportamiento) del programa sin fase de Teardown"}
+pytest          = {cmd="pytest", help="Comprueba que el resultado(comportamiento) del programa sin fase de Teardown"}
 check           = {cmd="py3compile bar_power/*.py", help="Comprueba la sintaxis de los ficheros python"}
 test            = ["pytest", "clean"]
 clean           = {cmd="rm -rf .pytest_cache ./**/__pycache__ ./**/__init__.pyc"}
