@@ -1,10 +1,12 @@
 # Material adicional para la elaboración de los hitos
 En este documento se encontrará toda la información necesaria para la consecución de los objetivos de la asignatura.
 
-## Documentación correspondiente al objetivo 0
+## Objetivo 0
 Captura de pantalla donde se visualiza la creación de las [claves pública y privada](img/ssh-keygen.png) y correcta [configuración en github](img/SSHkeys.png)
 
-## Documentación correspondiente al objetivo 1
+---
+
+## Objetivo 1
 ### Tipos de usuarios que usarán la aplicación
 Esta aplicación tiene dos tipos de usuarios bien diferenciados:
 1. Dueño del bar: es el usuario que hará un uso más intensivo de la aplicación. El cual quiere saber a través de la aplicación cuándo sus 
@@ -42,7 +44,9 @@ es necesario cambiar el ambiente del bar o servir platos más apropiados según 
 a la hora de hacerles una petición de lo que pueden consumir. Le gustaría que la aplicación con los datos actuales del bar le hiciera una sugerencia (predicción) de qué es más 
 probable que se consuma en función del cliente que sea.
 
-## Documentación correspondiente al objetivo 3
+---
+
+## Objetivo 3
 ### Elección del task runner y del gestor de dependencias 
 Makefile es uno de los gestores de tareas más simples y conocidos por ser una herramienta genérica, igualmente, python tiene su task runner específico **invoke** 
 que proporciona una API limpia y fácil de entender (de alto nivel) para organizar tareas, sin embargo, este último daba problemas con poetry, por lo que finalmente he optado 
@@ -55,3 +59,17 @@ Con respecto a la herramienta para comprobar la sintaxis de los archivos python,
 Para solucionar este último inconveniente que menciono de invoke, he decidido cambiar el task runner elegido por **poethepoet**, un gestor de tareas que funciona bien con poetry. En este caso cuando 
 ejecutamos desde nuestra terminal poethepoet, éste se ejecuta desde el entorno de poetry, además, poetry nos permite definir sus tareas desde el archivo pyproject.toml, lo que hace que definir tasks
 de poethepoet sea limpio y sencillo.
+
+---
+
+## Objetivo 5 
+### Elección del contenedor base
+Nuestro contenedor base debe cumplir con una serie de requisitos necesarios para nuestra imagen:
+* Que sea ligero
+* Que no genere problemas de paquetes no instalados
+
+Para la elección del contenedor base se planteó al principio elegir el propio de una distribución de ubuntu, sin embargo, la imagen de ubuntu incluye todas las herramientas del sistema, herramientas que no serían necesarias para pasar los tests, por lo que dicha opción se descartó. Únicamente lo que nos hace falta es tener python en la imagen, ahora tocaría preguntarse, ¿con qué versión? Tras investigar en la página oficial de [python](https://www.python.org/downloads/) y comprobar qué quiere decir el **maintenance status** en la [siguiente página](https://devguide.python.org/devcycle/), se ha decidido elegir la versión 3.8, ya que es la última versión de python que no está en modo de corrección de errores (lo que la hace una versión estable).
+
+Tras crear nuestra primera imagen con el contenedor base python:3.8 observé que no cumplía con uno de nuestros requisitos básicos, ser ligero, ya que ocupaba 992MB, el cuál es un tamaño excesivamente grande, además del tiempo que se necesitaba para descargar o actualizar la imagen en Dockerhub. Tras esto se probó entre distintas versiones de contenedores base de python como pueden ser **alpine** y **slim**. El contenedor base python:3.8-alpine podría ser una buena opción ya que tiene un tamaño muy reducido en comparación con la imagen base del lenguaje, sin embargo, en imágenes dónde se use python, puede hacer que las imágenes sean lentas y grandes ([Enlace de interés](https://pythonspeed.com/articles/alpine-docker-python/)). El contenedor base python:3.8-slim, al igual que alpine, tiene un tamaño muy reducido, no contiene los paquetes comunes contenidos en la imagen base por defecto y además sólo contiene los páquetes mínimos para poder correr python. Tras crear nuestra imagen usando este contenedor base se pudo comprobar que cumplía nuestros dos requisitos, ser de tamaño reducido (hemos pasado de 992MB usando python:3.8 a 204MB usando python:3.8-slim) y no generar problemas de paquetes no instalados, cosa que ocurría con alpine.
+
+Esta elección se ha llevado a cabo usando siempre como guía las [mejores prácticas](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) de docker.
