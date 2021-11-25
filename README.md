@@ -14,11 +14,15 @@ que se hace de los clientes.
  
 En definitiva, se trata de aumentar el margen de beneficio que los dueños de los bares suelen tener.
 
+---
+
 ## ¿Por qué hacer este proyecto? :bulb:
 Esta idea ha venido motivada principalmente porque en numerosas ocasiones he visto que bares, cafeterías, pizzerías, etc.., no 
 tenían una afluencia adecuada de clientes, no porque sirvieran mala comida sino porque no se preguntaban, ¿qué es lo que a 
 nuestros clientes les gusta?, ¿cuáles son los tipos de clientes con los que obtenemos mayor beneficio?. 
 Con este proyecto dichos problemas podrían reducirse, aumentando así la productividad y competitividad de estos lugares.
+
+---
 
 ## Historias de usuario :busts_in_silhouette:
 Enlaces a las distintas historias de usuario (HU):
@@ -26,6 +30,8 @@ Enlaces a las distintas historias de usuario (HU):
 * [[HU2]. Predicción de jóvenes](https://github.com/alexespana/BarPower/issues/10)
 * [[HU3]. Productos más consumidos en función del cliente](https://github.com/alexespana/BarPower/issues/3)
 * [[HU4]. Predicción de ancianos](https://github.com/alexespana/BarPower/issues/4)
+
+---
 
 ## Task runners y gestores de dependencias
 Para este proyecto se ha decidido utilizar **poethepoet** como gestor de tareas y **poetry** como gestor de dependencias. La justificación
@@ -108,7 +114,9 @@ Como hemos indicado anteriormente, para realizar los test hay que ejecutar:
 
     poe test
 
-### Contenedor para pruebas
+---
+
+## Contenedor para pruebas
 Para la creación de nuestro contenedor de pruebas se han seguido una serie de pasos reflejados en la creación del archivo Dockerfile. Como contenedor 
 base se ha elegido el oficial de python, en la versión 3.8, ya que es la última versión de python que no está en [modo de corrección de errores](https://devguide.python.org/devcycle/) 
 (lo que la hace una versión estable). Lo primero que necesitamos para realizar los test correctamenete dentro de la imagen es tener instaladas las 
@@ -120,7 +128,7 @@ ejecutamos los test a través del task runner.
 Al crear la imagen del contenedor he observado que el tamaño de ésta era excesivamente grande (992MB), por lo que he optado por usar una variante contenedor 
 base de python más ligera, **python slim**, consiguiendo reducir el tamaño de la imagen significativamente (204MB), haciéndola más ligera.
 
-#### ¿Cómo probarlo?
+### ¿Cómo probarlo?
 Para probar el correcto funcionamiento del contenedor deberemos descargar este repositorio  y ejecutar dentro de la carpeta raíz del mismo lo siguiente:
 
     docker run -t -v `pwd`:/app/test alexespana/barpower
@@ -128,6 +136,8 @@ Para probar el correcto funcionamiento del contenedor deberemos descargar este r
 En este comando, la opción -t indica cómo Unix/Linux maneja el acceso a la terminal y la opción -v concretamente lo que hace es montar el directorio
 local en el que se encuentra a la carpeta /app/test de la imagen, es por esta razón que no ha sido necesario incluir ningún fichero de test ni código fuente 
 en la creación de la imagen. La imagen se encuentra almacenada en Dockerhub y puedes acceder a ella [aquí](https://hub.docker.com/r/alexespana/barpower).
+
+---
 
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
