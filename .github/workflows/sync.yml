@@ -1,4 +1,4 @@
-name: Sincronizar Readme
+name: Sync Readme
 
 on:
   push:
