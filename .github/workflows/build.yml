@@ -1,4 +1,4 @@
-name: Actualización contenedor
+name: Sync docker
 
 on:
   push:
