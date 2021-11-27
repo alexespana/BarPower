@@ -1,5 +1,9 @@
 # Bar Power
 
+[![CircleCI Tests Status](https://circleci.com/gh/alexespana/barpower.svg?style=svg)](https://circleci.com/gh/alexespana/barpower)
+[![readme workflow](https://github.com/alexespana/barpower/actions/workflows/sync.yml/badge.svg)](https://github.com/alexespana/barpower/actions/workflows/sync.yml)
+[![docker workflow](https://github.com/alexespana/barpower/actions/workflows/build.yml/badge.svg)](https://github.com/alexespana/barpower/actions/workflows/build.yml)
+
 ## Descripción general del proyecto :memo:
 La idea de este proyecto será desarrollar un software para ayudar a maximizar la productividad, y por lo tanto la competitividad de los locales
 donde se sirva comida, ya sea bares, cafeterías, pizzerías, etc.
