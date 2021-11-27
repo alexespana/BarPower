@@ -1,4 +1,4 @@
-# Proyecto-IV
+# Bar Power
 
 ## Descripción general del proyecto :memo:
 La idea de este proyecto será desarrollar un software para ayudar a maximizar la productividad, y por lo tanto la competitividad de los locales
@@ -138,6 +138,30 @@ local en el que se encuentra a la carpeta /app/test de la imagen, es por esta ra
 en la creación de la imagen. La imagen se encuentra almacenada en Dockerhub y puedes acceder a ella [aquí](https://hub.docker.com/r/alexespana/barpower).
 
 ---
+
+## Sistema de integración continua 
+Hoy en día existe una gran variedad de sistemas de integración continua que pueden usarse para nuestros proyectos, entre los que se pueden encontrar los siguientes:
+* Github Actions
+* Travis
+* Circle CI
+* Semaphore CI
+* AppVeyor
+* Jenkings
+
+Ahora la pregunta sería, ¿cuál puede ser el más recomendado para nuestro proyecto? 
+
+Atendiendo a la facilidad de uso y lo estándar que es el sistema, **Travis** es probablemente el más recomendado de usar, ya que tiene una gran integración con Github, permitiendo 
+ver el resultado de la integración continua en la misma página de Github (**checks API**). Sin embargo, dado que para darse de alta exigen tarjeta de crédito (lo cual no todo el 
+mundo posee), se ha descartado como opción. Dado que en el objetivo anterior se usó **Github Actions** para configurar la sincronización del README y la actualización del docker, he
+decidido descartar usarlos ya que en los tests de la asignatura se comprobará que se haya configurado un sistema de integración continua distinto a Github Actions (que es un falso 
+positivo). Siguiendo con la comparativa de los sistemas de CI disponibles, si tuviéramos que elegir entre **Circle CI** y **Semaphore CI**, Circle CI es más aceptado por la comunidad,
+ya que tiene una mayor integración con Github que Semaphore CI. Además de ésto se ha comprobado cuál de los dos es el más utilizado actualmente mediante distintos rankings como [este](https://cprimestudios.com/blog/top-cicd-tools-2021-most-complete-guide-33-best-picks-devops) o [este](https://www.slant.co/topics/799/~best-continuous-integration-tools), en el que CircleCI se
+encuentra en la 3ª posición y SemaphoreCI en la 16ª y en el que CircleCI está en la 5ª posición y SemaphoreCI en la 10ª, respectivamente. Con respecto al resto de sistemas de CI (AppVeyor y Jenkings), decir que **Jenkings** es el más popular actualmente, sin embargo, no es sólo un sistema de integración continua sino que además es un sistema de entrega/implementación continua, por lo que se ha descartado como opción.
+
+Tras esta comparación, he decidido usar como sistema de integración continua **CircleCI** ya que es sencillo de usar, fácilmente configurable y además tiene una gran integración con Github, permitiendo
+incluir fácilmente el [checks API](https://circleci.com/docs/2.0/enable-checks/), de forma que se puedan ver los resultados de la integración continua en Github. Además, nos permite crear y editar el archivo de configuración de la integración continua, llamado **config.yml** desde su interfaz web, corrigiendo errores sintácticos y permitiendo hacer commits del archivo directamente a la rama en la que nos encontremos.
+
+Para más información acerca de la configuración del sistema de integración continua, visite la documentación adicional incluida al final de este archivo.
 
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
