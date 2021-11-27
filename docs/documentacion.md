@@ -73,3 +73,26 @@ Para la elección del contenedor base se planteó al principio elegir el propio 
 Tras crear nuestra primera imagen con el contenedor base python:3.8 observé que no cumplía con uno de nuestros requisitos básicos, ser ligero, ya que ocupaba 992MB, el cuál es un tamaño excesivamente grande, además del tiempo que se necesitaba para descargar o actualizar la imagen en Dockerhub. Tras esto se probó entre distintas versiones de contenedores base de python como pueden ser **alpine** y **slim**. El contenedor base python:3.8-alpine podría ser una buena opción ya que tiene un tamaño muy reducido en comparación con la imagen base del lenguaje, sin embargo, en imágenes dónde se use python, puede hacer que las imágenes sean lentas y grandes ([Enlace de interés](https://pythonspeed.com/articles/alpine-docker-python/)). El contenedor base python:3.8-slim, al igual que alpine, tiene un tamaño muy reducido, no contiene los paquetes comunes contenidos en la imagen base por defecto y además sólo contiene los páquetes mínimos para poder correr python. Tras crear nuestra imagen usando este contenedor base se pudo comprobar que cumplía nuestros dos requisitos, ser de tamaño reducido (hemos pasado de 992MB usando python:3.8 a 204MB usando python:3.8-slim) y no generar problemas de paquetes no instalados, cosa que ocurría con alpine.
 
 Esta elección se ha llevado a cabo usando siempre como guía las [mejores prácticas](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) de docker.
+
+---
+
+## Objetivo 6
+### Configuración del sistema de integración continua
+El principal objetivo de añadir un sistema de integración continua a nuestro proyecto es asegurar que el código pasa todos los tests antes de ser desplegado o simplemente (como en este caso) incorporado a la rama principal, por lo que configuraremos nuestro repositorio para que se pasen los tests automáticamente.
+
+Dado que el sistema de CI elegido es CircleCI, se precisa de un archivo llamado **config.yml** para su configuración, que se encuentra en la carpeta **.circleci**. A continuación voy a proceder a explicar su contenido:
+* **version: 2.1**: es la versión de CircleCI a utilizar, siempre es recomendable usar la última versión disponible.
+* Ahora pasamos a definir los jobs necesarios para pasar los tests, en este caso solo será necesario uno, al que llamamos **ejecutar-tests**
+    * **executor**: éste define la tecnología o entorno subyacente donde se va a ejecutar una tarea. Éstos pueden ser de cuatro tipos: ***docker, machine, macos o windows***.
+    Dado que queremos aprovechar el contenedor de Docker creado en el objetivo anterior (que únicamente contiene los módulos/bibliotecas necesarios para pasar los tests) necesitaremos 
+    que nuestro entorno de ejecución (donde se ejecute la tarea) tenga acceso completo al proceso de docker, por esta razón el executor es **machine** (máquina virtual de linux).
+        * **image: ubuntu-2004:202111-01**: en principio la imagen elegida para ejecutar docker no es especialmente relevante en este caso, ya que únicamente ejecutaría el contenedor
+        que ya tenemos para pasar los tests. En este caso se ha elegido la última imagen disponible, que tiene las siguientes especificaciones: Ubuntu 20.04, Docker v20.10.11 y
+         Docker Compose v1.29.2.
+    * **Steps**: son los pasos que se van a llevar a cabo en la tarea.
+        * checkout: comprueba el código fuente del repositorio ([more info](https://circleci.com/docs/2.0/configuration-reference/#checkout)).
+        * command: docker run -t -v `pwd`:/app/test alexespana/barpower: ejecuta los tests sobre el repositorio. El hecho de usar un contenedor para pasar los tests hace que éstos se ejecuten
+        de una forma más rápida y eficiente.
+* Finalmente, indicamos los jobs que queremos ejecutar, en este caso **ejecutar-tests**.
+
+CircleCI por defecto pasará los tests automáticamente cada vez que se haga push al repositorio.
