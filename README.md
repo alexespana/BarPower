@@ -3,6 +3,7 @@
 [![CircleCI Tests Status](https://circleci.com/gh/alexespana/barpower.svg?style=svg)](https://circleci.com/gh/alexespana/barpower)
 [![readme workflow](https://github.com/alexespana/barpower/actions/workflows/sync.yml/badge.svg)](https://github.com/alexespana/barpower/actions/workflows/sync.yml)
 [![docker workflow](https://github.com/alexespana/barpower/actions/workflows/build.yml/badge.svg)](https://github.com/alexespana/barpower/actions/workflows/build.yml)
+[![versions workflow](https://github.com/alexespana/barpower/actions/workflows/versions.yml/badge.svg)](https://github.com/alexespana/barpower/actions/workflows/versions.yml)
 
 ## Descripción general del proyecto :memo:
 La idea de este proyecto será desarrollar un software para ayudar a maximizar la productividad, y por lo tanto la competitividad de los locales
@@ -164,6 +165,12 @@ encuentra en la 3ª posición y SemaphoreCI en la 16ª y en el que CircleCI est�
 
 Tras esta comparación, he decidido usar como sistema de integración continua **CircleCI** ya que es sencillo de usar, fácilmente configurable y además tiene una gran integración con Github, permitiendo
 incluir fácilmente el [checks API](https://circleci.com/docs/2.0/enable-checks/), de forma que se puedan ver los resultados de la integración continua en Github. Además, nos permite crear y editar el archivo de configuración de la integración continua, llamado **config.yml** desde su interfaz web, corrigiendo errores sintácticos y permitiendo hacer commits del archivo directamente a la rama en la que nos encontremos.
+
+Otro de los puntos a cubrir de la integración continua es comprobar con qué versiones del lenguaje funciona nuestra aplicación. Para ello, he decidido usar como segundo sistema de CI las 
+Github Actions de Github, entre otras cosas porque al buscar un poco de información sobre el uso de la **matrix** he podido comprobar que la configuración es muy sencilla, pudiendo 
+encontrar una muy buena documentación respecto al tema en estas páginas oficiales de Github: [referencia 1](https://docs.github.com/es/actions/learn-github-actions/managing-complex-workflows) y 
+[referencia 2](https://docs.github.com/es/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix). Además, es obvia la gran integración que tienen con 
+Github, no necesitando ningún tipo de configuración previa para poder ver el resultado de los workflows.
 
 Para más información acerca de la configuración del sistema de integración continua, visite la documentación adicional incluida al final de este archivo.
 
