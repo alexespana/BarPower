@@ -1,0 +1,27 @@
+name: Test versions
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-versions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['2.7', '3', '3.6', '3.7', '3.8', '3.9']
+    name: Python ${{ matrix.python-version }} version
+    steps:
+      - name: Checkout
+      # https://github.com/marketplace/actions/checkout
+        uses: actions/checkout@v2
+      - name: Set up python
+      # https://github.com/marketplace/actions/setup-python
+        uses: actions/setup-python@v2.3.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install poetry && poetry install
+      - name: Test app
+        run: poetry run poe test
