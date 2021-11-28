@@ -78,6 +78,7 @@ Esta elección se ha llevado a cabo usando siempre como guía las [mejores prác
 
 ## Objetivo 6
 ### Configuración del sistema de integración continua
+#### Ejecutar tests automáticamente
 El principal objetivo de añadir un sistema de integración continua a nuestro proyecto es asegurar que el código pasa todos los tests antes de ser desplegado o simplemente (como en este caso) incorporado a la rama principal, por lo que configuraremos nuestro repositorio para que se pasen los tests automáticamente.
 
 Dado que el sistema de CI elegido es CircleCI, se precisa de un archivo llamado **config.yml** para su configuración, que se encuentra en la carpeta **.circleci**. A continuación voy a proceder a explicar su contenido:
@@ -96,3 +97,14 @@ Dado que el sistema de CI elegido es CircleCI, se precisa de un archivo llamado 
 * Finalmente, indicamos los jobs que queremos ejecutar, en este caso **ejecutar-tests**.
 
 CircleCI por defecto pasará los tests automáticamente cada vez que se haga push al repositorio.
+
+#### Versiones del lenguaje con las que funciona
+En esta configuración se ha decidido testear la aplicación con distintas versiones del lenguaje python, que van desde la versión 2.7 a la 3.9. Entre los detalles más importantes de la
+configuración tenemos:
+* **strategy**: esta palabra clave indica que queremos crear una matriz de compilaciones.
+    * **matrix**: será nuestra matriz de compilaciones, esta matriz de compilaciones ejecutará el job varias veces utilizando distintas versiones de python, que están especificadas 
+    en python-version.
+* Usamos una github action ya definida en el [marketplace](https://github.com/marketplace/actions/setup-python) para establecer la versión de python a usar.
+* Finalmente, testeamos la aplicación sobre los fuentes del repositorio.
+
+Este job que hemos definido se ejecutará tantas veces como distintas versiones del lenguaje hayamos indicado (en este caso 6) y además, cada uno de estos flujos se ejecutará de forma paralela.
