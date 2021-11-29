@@ -99,12 +99,11 @@ Dado que el sistema de CI elegido es CircleCI, se precisa de un archivo llamado 
 CircleCI por defecto pasará los tests automáticamente cada vez que se haga push al repositorio.
 
 #### Versiones del lenguaje con las que funciona
-En esta configuración se ha decidido testear la aplicación con distintas versiones del lenguaje python, que van desde la versión 2.7 a la 3.9. Entre los detalles más importantes de la
-configuración tenemos:
+En esta configuración se ha decidido testear la aplicación con distintas versiones del lenguaje python. Comprobando las [dependencias](https://github.com/alexespana/barpower/blob/Objetivo-6/pyproject.toml) requeridas por nuestra aplicación, vemos que las versiones soportadas serían las iguales o superiores a la versión 3.8 de python, por lo que se testeará la aplicación con la versión más antigua soportada por la configuración de poetry, **versión 3.8** (última versión estable) y todas las versiones posteriores, las **versiones 3.9** y **3.10**. Entre los detalles más importantes de la configuración tenemos:
+
 * **strategy**: esta palabra clave indica que queremos crear una matriz de compilaciones.
-    * **matrix**: será nuestra matriz de compilaciones, esta matriz de compilaciones ejecutará el job varias veces utilizando distintas versiones de python, que están especificadas 
-    en python-version.
-* Usamos una github action ya definida en el [marketplace](https://github.com/marketplace/actions/setup-python) para establecer la versión de python a usar.
+    * **matrix**: será nuestra matriz de compilaciones, esta matriz de compilaciones ejecutará el job varias veces (tres veces en concreto) utilizando distintas versiones de python, que están especificadas en **python-version**.
+* Usamos una github action ya definida en el [marketplace](https://github.com/marketplace/actions/setup-python) para establecer la versión de python a usar (3.8, 3.9 y 3.10).
 * Finalmente, testeamos la aplicación sobre los fuentes del repositorio.
 
-Este job que hemos definido se ejecutará tantas veces como distintas versiones del lenguaje hayamos indicado (en este caso 6) y además, cada uno de estos flujos se ejecutará de forma paralela.
+Este job que hemos definido se ejecutará tantas veces como distintas versiones del lenguaje hayamos indicado (en este caso 4) y además, cada uno de estos flujos se ejecutará de forma paralela.
