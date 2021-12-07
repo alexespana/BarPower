@@ -82,7 +82,7 @@ Esta elección se ha llevado a cabo usando siempre como guía las [mejores prác
 El principal objetivo de añadir un sistema de integración continua a nuestro proyecto es asegurar que el código pasa todos los tests antes de ser desplegado o simplemente (como en este caso) incorporado a la rama principal, por lo que configuraremos nuestro repositorio para que se pasen los tests automáticamente.
 
 Dado que el sistema de CI elegido es CircleCI, se precisa de un archivo llamado **config.yml** para su configuración, que se encuentra en la carpeta **.circleci**. A continuación voy a proceder a explicar su contenido:
-* **version: 2.1**: es la versión de CircleCI a utilizar, siempre es recomendable usar la última versión disponible.
+* **version: 2.1**: es la versión de CircleCI incluida por defecto por el generador automático de configuraciones de CircleCI.
 * Ahora pasamos a definir los jobs necesarios para pasar los tests, en este caso solo será necesario uno, al que llamamos **ejecutar-tests**
     * **executor**: éste define la tecnología o entorno subyacente donde se va a ejecutar una tarea. Éstos pueden ser de cuatro tipos: ***docker, machine, macos o windows***.
     Dado que queremos aprovechar el contenedor de Docker creado en el objetivo anterior (que únicamente contiene los módulos/bibliotecas necesarios para pasar los tests) necesitaremos 
