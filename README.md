@@ -144,35 +144,42 @@ en la creación de la imagen. La imagen se encuentra almacenada en Dockerhub y p
 
 ---
 
-## Sistema de integración continua 
+## Sistema de integración continua
+Nuestros sistemas de integración continua deben de cumplir con una serie de **requisitos** para su aceptación:
+* Que sean sencillos de configurar, tanto para pasar los tests automáticamente como para probar con distintas versiones del lenguaje la aplicación.
+* Que el checks API pueda ser configurado fácilmente
+* Que no se requiera introducir una tarjeta de crédito.
+
 Hoy en día existe una gran variedad de sistemas de integración continua que pueden usarse para nuestros proyectos, entre los que se pueden encontrar los siguientes:
 * Github Actions
 * Travis
 * Circle CI
 * Semaphore CI
 * AppVeyor
-* Jenkings
+* Jenkins
 
-Ahora la pregunta sería, ¿cuál puede ser el más recomendado para nuestro proyecto? 
+Teniendo en cuenta ésto, vamos a realizar una **búsqueda parametrizada** de los sistemas de integración continua que cumplen los requisitos especificados más arriba.
+Comenzaremos eligiendo el necesario para pasar los tests automáticamente y posteriormente el segundo sistema de CI, necesario para testear la aplicación con 
+distintas versioens del lenguaje.
 
-Atendiendo a la facilidad de uso y lo estándar que es el sistema, **Travis** es probablemente el más recomendado de usar, ya que tiene una gran integración con Github, permitiendo 
-ver el resultado de la integración continua en la misma página de Github (**checks API**). Sin embargo, dado que para darse de alta exigen tarjeta de crédito (lo cual no todo el 
-mundo posee), se ha descartado como opción. Dado que en el objetivo anterior se usó **Github Actions** para configurar la sincronización del README y la actualización del docker, he
-decidido descartar usarlos ya que en los tests de la asignatura se comprobará que se haya configurado un sistema de integración continua distinto a Github Actions (que es un falso 
-positivo). Siguiendo con la comparativa de los sistemas de CI disponibles, si tuviéramos que elegir entre **Circle CI** y **Semaphore CI**, Circle CI es más aceptado por la comunidad,
-ya que tiene una mayor integración con Github que Semaphore CI. Además de ésto se ha comprobado cuál de los dos es el más utilizado actualmente mediante distintos rankings como [este](https://cprimestudios.com/blog/top-cicd-tools-2021-most-complete-guide-33-best-picks-devops) o [este](https://www.slant.co/topics/799/~best-continuous-integration-tools), en el que CircleCI se
-encuentra en la 3ª posición y SemaphoreCI en la 16ª y en el que CircleCI está en la 5ª posición y SemaphoreCI en la 10ª, respectivamente. Con respecto al resto de sistemas de CI (AppVeyor y Jenkings), decir que **Jenkings** es el más popular actualmente, sin embargo, no es sólo un sistema de integración continua sino que además es un sistema de entrega/implementación continua, por lo que se ha descartado como opción.
+1. Atendiendo a la facilidad de uso y lo estándar que es el sistema, **Travis** es probablemente el más recomendado de usar, ya que permite ver el resultado de la integración 
+continua en la misma página de Github (**checks API**) de manera muy sencilla. Sin embargo, dado que para darse de alta exigen tarjeta de crédito (lo cual no todo el mundo posee), 
+se ha descartado como opción. Dado que en el objetivo anterior se usó **Github Actions** para configurar la sincronización del README y la actualización del docker, he decidido 
+descartar usarlos ya que en los tests de la asignatura se comprobará que se haya configurado un sistema de integración continua distinto a Github Actions (que es un falso 
+positivo). Siguiendo con la comparativa de los sistemas de CI disponibles, si tuviéramos que elegir entre **Circle CI** y **Semaphore CI**, Circle CI es más aceptado por la comunidad.
+Además de ésto se ha comprobado cuál de los dos es el más utilizado actualmente mediante distintos rankings como [este](https://cprimestudios.com/blog/top-cicd-tools-2021-most-complete-guide-33-best-picks-devops) o [este](https://www.slant.co/topics/799/~best-continuous-integration-tools), en el que CircleCI se
+encuentra en la 3ª posición y SemaphoreCI en la 16ª y en el que CircleCI está en la 5ª posición y SemaphoreCI en la 10ª, respectivamente. Con respecto al resto de sistemas de CI (AppVeyor y Jenkins), decir que **Jenkins** es el más popular actualmente, sin embargo, no es sólo un sistema de integración continua sino que además es un sistema de entrega/implementación continua, por lo que se ha descartado como opción.
 
-Tras esta comparación, he decidido usar como sistema de integración continua **CircleCI** ya que es sencillo de usar, fácilmente configurable y además tiene una gran integración con Github, permitiendo
-incluir fácilmente el [checks API](https://circleci.com/docs/2.0/enable-checks/), de forma que se puedan ver los resultados de la integración continua en Github. Además, nos permite crear y editar el archivo de configuración de la integración continua, llamado **config.yml** desde su interfaz web, corrigiendo errores sintácticos y permitiendo hacer commits del archivo directamente a la rama en la que nos encontremos.
+    Tras esta comparación, he decidido usar como primer sistema de integración continua **CircleCI** ya que es sencillo de usar, fácilmente configurable, permitiendo incluir fácilmente 
+el [checks API](https://circleci.com/docs/2.0/enable-checks/), de forma que se puedan ver los resultados de la integración continua en Github. Además, nos permite crear y editar el archivo de configuración de la integración continua, llamado **config.yml** desde su interfaz web, corrigiendo errores sintácticos y permitiendo hacer commits del archivo directamente a la rama en la que nos encontremos.
 
-Otro de los puntos a cubrir de la integración continua es comprobar con qué versiones del lenguaje funciona nuestra aplicación. Para ello, he decidido usar como segundo sistema de CI las 
+2. Otro de los puntos a cubrir de la integración continua es comprobar con qué versiones del lenguaje funciona nuestra aplicación. Para ello, he decidido usar como segundo sistema de CI las 
 Github Actions de Github, entre otras cosas porque al buscar un poco de información sobre el uso de la **matrix** he podido comprobar que la configuración es muy sencilla, pudiendo 
 encontrar una muy buena documentación respecto al tema en estas páginas oficiales de Github: [referencia 1](https://docs.github.com/es/actions/learn-github-actions/managing-complex-workflows) y 
 [referencia 2](https://docs.github.com/es/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix). Además, es obvia la gran integración que tienen con 
 Github, no necesitando ningún tipo de configuración previa para poder ver el resultado de los workflows.
 
-Para más información acerca de la configuración del sistema de integración continua, visite la documentación adicional incluida al final de este archivo.
+Para más información acerca de la configuración de los sistemas de integración continua, visite la documentación adicional incluida al final de este archivo.
 
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
