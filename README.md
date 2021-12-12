@@ -204,5 +204,14 @@ En algunos lenguajes como python, existen facilidades para el registro de logs i
 Teniendo en cuenta lo mencionado anteriormente se ha decidido usar como sistema de logs el módulo **logging** de python, éste cumple con todos los requisitos que hemos especificado
 al inicio, además de que sigue siendo software mantenido y realmente fácil de configurar.
 
+### Servicio de configuración remota
+Otro de los puntos a tener en cuenta para nuestra aplicación es tener un sistema de configuración distribuida. En este caso, el único requisito que necesito para este sistema de configuración
+distribuida es que sea sencillo de configurar. 
+
+Actualmente no hay muchas alternativas (como bien dice [aquí](http://jj.github.io/CC/documentos/temas/Configuracion_microservicios)), teniendo por un lado **etcd3** y **consul**. Etcd3 es un sistema de almacenamiento clave/valor que permite configurar aplicaciones de una forma sencilla funcionando sobre un puerto conocido y accesible, mientras que consul es una herramienta bastante más compleja de 
+configurar, Por esta razón se ha decidido usar **etcd3** directamente, como se nos recomendó en clase de teoría. Es importante tener en cuenta que en esta fase estamos realizando la configuración del cliente, dejando la configuración del servidor para objetivos posteriores.
+
+Además del sistema de configuración distribuida, la configuración necesita usar las variables de configuración y los ficheros de entorno que igualmente siguen el formato clave/valor, por lo que será necesario usar un módulo como dotenv, que permita cargar las variables de entorno que estén escritas en un fichero **.env**. 
+
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
