@@ -181,5 +181,28 @@ Github, no necesitando ningún tipo de configuración previa para poder ver el r
 
 Para más información acerca de la configuración de los sistemas de integración continua, visite la documentación adicional incluida al final de este archivo.
 
+---
+
+## Servicios esenciales en la nube
+### Registro de actividad (logger)
+Añadir un sistema de logs a una aplicación es algo fundamental para poder controlar los eventos que se van sucediendo en ésta, ya sea para comprobar el funcionamiento normal de la aplicación
+o el posible funcionamiento erróneo de la misma.
+
+Teniendo ésto en cuenta, debemos añadir un servicio de logs a la aplicación que cumpla los siguientes requisitos a ser posible:
+* Que permita modificar fácilmente el formato de los mensajes mostrados.
+* Que permita redirigir los mensajes a un fichero de logs.
+* Que permita distinguir entre distintos tipos de mensajes de logs (niveles).
+* Que el software sea habitualmente mantenido por la comunidad.
+* Que sea fácil de integrar y configurar con python.
+
+Tras realizar una búsqueda en profundidad de los distintos sistemas de logs disponibles para python, no he encontrado una gran variedad, se planteó usar una versión de
+[pinojs](https://github.com/pinojs/pino) versionada para python, [pino.py](https://github.com/CoorpAcademy/pino.py), sin embargo, no es una buena opción ya que es un prototipo en construcción 
+y la API podría cambiar, además de que no cumple con el requisito de que sea habitualmente mantenida (último commit hace más de un año).
+
+En algunos lenguajes como python, existen facilidades para el registro de logs incluidas directamente en la librería básica. Python incluye un módulo [**logging**](https://docs.python.org/es/3.8/howto/logging.html) para el registro de actividad, proporcionando distintas funciones que se usan de acuerdo al nivel de los eventos que se suceden en la aplicación. Teniendo por lo tanto cuatro niveles posibles: DEBUG, INFO, WARNING, ERROR y CRITICAL, ordenados en orden creciente de gravedad. Además de lo mencionado, permite una gran flexibilidad para modificar el formato de los mensajes de logs. Por último, permite redirigir los mensajes de logs fácilmente a un fichero incluyendo en el método de configuración (**basicConfig**) un parámetro **filename** que indica el ficho al que redirigir el registro de actividad.
+
+Teniendo en cuenta lo mencionado anteriormente se ha decidido usar como sistema de logs el módulo **logging** de python, éste cumple con todos los requisitos que hemos especificado
+al inicio, además de que sigue siendo software mantenido y realmente fácil de configurar.
+
 ## Documentación adicional :books:
 [Enlace a documentación](docs/documentacion.md)
