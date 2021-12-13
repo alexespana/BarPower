@@ -1,6 +1,6 @@
 import pytest   # Biblioteca de aserciones
-from bar_power.Visits import *
-from bar_power.ClientType import *
+from bar_power.visits import *
+from bar_power.clientType import *
 
 HOUR = 19
 PRODUCT = 'paella'

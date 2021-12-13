@@ -1,7 +1,7 @@
 from datetime import datetime
-from bar_power.Order import *
-from bar_power.Visit import *
-from bar_power.ClientType import *
+from bar_power.order import *
+from bar_power.visit import *
+from bar_power.clientType import *
 
 class Visits:
     """

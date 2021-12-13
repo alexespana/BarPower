@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from bar_power.ClientType import ClientType
+from bar_power.clientType import ClientType
 
 @dataclass(frozen=True)     # Cualquier asignación producirá una excepción
 class Visit:                # del tipo dataclasses.FrozenInstanceError
