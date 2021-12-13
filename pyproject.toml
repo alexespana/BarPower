@@ -7,6 +7,8 @@ authors = ["Joaquín Alejandro España Sánchez <joaquinalejandroespana@gmail.co
 [tool.poetry.dependencies]
 python = "^3.8"
 pytest = "^6.2.5"
+etcd3 = "^0.12.0"
+python-dotenv = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"
