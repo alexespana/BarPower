@@ -107,3 +107,23 @@ En esta configuración se ha decidido testear la aplicación con distintas versi
 * Finalmente, testeamos la aplicación sobre los fuentes del repositorio.
 
 Este job que hemos definido se ejecutará tantas veces como distintas versiones del lenguaje hayamos indicado (en este caso 4) y además, cada uno de estos flujos se ejecutará de forma paralela.
+
+---
+
+## Objetivo 7
+### Nuevo nivel de abstracción
+Teniendo en cuenta uno de los principios SOLID, la O viene a decir que el código que se escribió debe estar preparado de forma que se prevea su cambio en el futuro, Open/Close, abierto a extensión, **cerrado a modificación**, por lo que las clases que ya tenemos no debemos modificarlas.
+
+Por esta razón, deberemos de realizar el logging en un nivel superior de abstracción. Para ello se ha decidido crear la clase Handler, que realiza el logging de la aplicación. En ella hemos importado el contenido del archivo logger.py. En este archivo se leen las variables de configuración de la aplicación por medio de un objeto Config que contiene la configuración de la aplicación. En dicho archivo se ha realizado lo siguiente:
+1. Aparte de leer el directorio de logs y el archivo de logs desde la configuración, también se ha creado de forma recursiva el directorio de logs especificado en la configuración, ya que este directorio podría no estar, realizándose de forma incorrecta el logging por lo tanto.
+    ```shell
+    if not os.path.exists(LOG_DIRECTORY):
+    os.makedirs(LOG_DIRECTORY, exist_ok=True)
+    ```
+2. Finalmente se ha realizado la configuración del logger, teniendo en cuenta que:
+    ```shell
+    logging.basicConfig(filename=LOG_DIRECTORY + LOG_FILE, level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s' )
+    ```
+    * filename: indica el fichero de logs
+    * level: indica el umbral a partir del cual se registran los logs, en este caso DEBUG, el más bajo.
+    * format: indica el formato de los mensajes de log. 
