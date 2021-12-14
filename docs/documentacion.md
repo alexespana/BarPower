@@ -127,3 +127,29 @@ Por esta razón, deberemos de realizar el logging en un nivel superior de abstra
     * filename: indica el fichero de logs
     * level: indica el umbral a partir del cual se registran los logs, en este caso DEBUG, el más bajo.
     * format: indica el formato de los mensajes de log. 
+
+### Abstracción de la configuración remota
+Para la realización de este apartado se ha decidido encapsular todos los sistemas de configuración remota que se pudieran necesitar en una clase configuración. De esta manera se consigue la llamada **separation of concerns**, que viene a significar que la única responsable de la configuración de la aplicación es la clase Config, dejando la configuración externa al código de la aplicación.
+
+A continuación, voy a explicar el funcionamiento de la misma, por ahora es bastante sencilla ya que solo la estamos configurando para que contenga las variables necesarias para la configuración del logger:
+1. Dado que no tenemos un servidor montaddo todavía, la configuración distribuida la estamos haciendo en el **cliente**, por lo que la petición al servidor en busca de las variables LOG_DIR_VAR_NAME y LOG_FILE_VAR_NAME fallarán.
+    ```shell
+    self.log_directory = etcd_client.get(LOG_DIR_VAR_NAME)[0].decode("utf8")
+    self.log_file = etcd_client.get(LOG_FILE_VAR_NAME)[0].decode("utf8")
+    ```
+    En este caso el método get del cliente de etcd3 devuelve dos objetos (bytes, KVMetadata), por lo que deberemos de coger el primer elemento del return y decodificarlo para obtener el resultado deseado.
+2. Al capturar la excepción generada al realizar la petición al servidor, se cargan las variables de entorno que se puedan encontrar en un fichero **.env** mediante el método load_dotenv() del módulo dotenv. Dicho método carga al entorno las variables definidas en un fichero siguiendo el formato clave=valor (variables de entorno)
+    ```shell
+    load_dotenv('bar_power/config.env')
+    ```
+3. Si no estamos cargando las variables de entorno mediante un fichero .env deberemos de darles un valor por defecto, sobre todo para que no tengamos problemas al pasar los tests, ya que en éstos las variables de entorno no se encontrarán. En este caso se ha decidido asignar como directorio de logs el directorio **/bar_power/log/** que se encuentra en la carpeta /tmp del sistema y como nombre del fichero de logs **bar_power.log**.
+    ```shell
+    ...
+    else:
+        self.log_directory = '/tmp/barpower/log/'   # Lugar con permisos de escritura
+    ...
+    else:
+        self.log_file = 'bar_power.log'
+
+    ```
+4. Por último, solo nos quedaría realizar los getters de la clase para que la configuración pueda ser accedida desde un objeto Config.
