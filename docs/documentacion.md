@@ -122,7 +122,7 @@ Por esta razón, deberemos de realizar el logging en un nivel superior de abstra
     ```
 2. Finalmente se ha realizado la configuración del logger, teniendo en cuenta que:
     ```shell
-    logging.basicConfig(filename=LOG_DIRECTORY + LOG_FILE, level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s' )
+    logging.basicConfig(filename=LOG_DIRECTORY + LOG_FILE, level=logging.DEBUG, format='%(asctime)s <=> %(levelname)s <=> %(pathname)s <=> %(message)s' )
     ```
     * filename: indica el fichero de logs
     * level: indica el umbral a partir del cual se registran los logs, en este caso DEBUG, el más bajo.
