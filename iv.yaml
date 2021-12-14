@@ -5,3 +5,4 @@ automatizar:
   orden: poe
 test: tests/test_visits.py
 CI: .circleci/config.yml
+configuracion: bar_power/config.py
