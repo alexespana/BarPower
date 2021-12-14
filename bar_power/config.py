@@ -20,7 +20,7 @@ class Config:
             if(os.getenv('LOG_FILE')):
                 self.log_file = os.getenv('LOG_FILE')
             else:
-                self.log_file = 'barpower.log'
+                self.log_file = 'bar_power.log'
 
     
     def get_log_directory(self):
