@@ -140,7 +140,7 @@ A continuación, voy a explicar el funcionamiento de la misma, por ahora es bast
     En este caso el método get del cliente de etcd3 devuelve dos objetos (bytes, KVMetadata), por lo que deberemos de coger el primer elemento del return y decodificarlo para obtener el resultado deseado.
 2. Al capturar la excepción generada al realizar la petición al servidor, se cargan las variables de entorno que se puedan encontrar en un fichero **.env** mediante el método load_dotenv() del módulo dotenv. Dicho método carga al entorno las variables definidas en un fichero siguiendo el formato clave=valor (variables de entorno)
     ```shell
-    load_dotenv('bar_power/config.env')
+    load_dotenv('config.env')
     ```
 3. Si no estamos cargando las variables de entorno mediante un fichero .env deberemos de darles un valor por defecto, sobre todo para que no tengamos problemas al pasar los tests, ya que en éstos las variables de entorno no se encontrarán. En este caso se ha decidido asignar como directorio de logs el directorio **/bar_power/log/** que se encuentra en la carpeta /tmp del sistema y como nombre del fichero de logs **bar_power.log**.
     ```shell
@@ -153,3 +153,5 @@ A continuación, voy a explicar el funcionamiento de la misma, por ahora es bast
 
     ```
 4. Por último, solo nos quedaría realizar los getters de la clase para que la configuración pueda ser accedida desde un objeto Config.
+
+Nota: es importante tener en cuenta que estamos utilizando variables globales de módulo, lo cuál no es aconsejado, sería conveniente utilizar para objetivos posteriores estas variables como objetos.
