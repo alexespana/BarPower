@@ -11,7 +11,7 @@ class Config:
             self.log_directory = etcd_client.get(LOG_DIR_VAR_NAME)[0].decode("utf8")
             self.log_file = etcd_client.get(LOG_FILE_VAR_NAME)[0].decode("utf8")
         except:
-            load_dotenv('bar_power/config.env')
+            load_dotenv('config.env')
             if (os.getenv('LOG_DIR')):
                 self.log_directory = os.getenv('LOG_DIR')
             else:
