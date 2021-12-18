@@ -1,5 +1,3 @@
-import logging
-
 from bar_power.visit import Visit
 from bar_power.order import Order
 from bar_power.visits import Visits
@@ -19,27 +17,25 @@ class Handler:
             self.visit = Visit(time, client_type)
             self.logger.info("La visita ha sido creada correctamente")
             return self.visit
-        except Exception as exception:
+        except Exception:
             self.logger.error("Hubo un error al intentar crear la visita")
-            raise exception
 
     def create_order(self, time: int, product: str):
         try:
             self.order = Order(time, product)
             self.logger.info("La comanda ha sido creada correctamente")
             return self.order
-        except Exception as exception:
+        except Exception:
             self.logger.error("Hubo un error al intentar crear la comanda")
-            raise exception
 
     def create_visits(self):
         try:
             self.visits = Visits()
             self.logger.info("El vector de visitas ha sido creado correctamente")
             return self.visits
-        except Exception as exception:
+        except Exception:
             self.logger.error("Hubo un error al intentar crear el vector de visitas")
-            raise exception
+
 
     def add_visit(self, client_type: ClientType, time: int = None):
         """
@@ -65,7 +61,7 @@ class Handler:
             self.visits.add_visit(client_type, time)
             self.logger.info("Se ha registrado una nueva visita al local")
         except Exception as exception:
-            self.logger.error(print(exception))
+            self.logger.error(str(exception))
             raise exception
 
     def add_product_consumed(self, product: str, time: int = None):
@@ -91,5 +87,5 @@ class Handler:
             self.visits.add_product_consumed(product, time)
             self.logger.info("Se ha registrado la comanda de " + product + " correctamente")
         except Exception as exception:
-            self.logger.error(print(exception))
+            self.logger.error(str(exception))
             raise exception   
