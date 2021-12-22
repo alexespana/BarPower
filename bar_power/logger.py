@@ -8,6 +8,7 @@ class Logger():
         self.configuration = Config()
         self.log_directory = self.configuration.get_log_directory()
         self.log_file      = self.configuration.get_log_file()
+        self.milogger = logging.getLogger()     # Objeto de log
         self.format        = format
         self.level         = level
 
@@ -18,7 +19,11 @@ class Logger():
             except OSError:
                 raise OSError("Error al intentar crear el directorio ")
 
-        logging.basicConfig(filename=self.log_directory + self.log_file, level=self.level, format=self.format)
+        # Nivel de logging
+        self.milogger.setLevel(level)
+
+        # Configuración básica del sistema de log
+        logging.basicConfig(filename=self.log_directory + self.log_file, format=self.format)
     
     
     def debug(self, msg : str):
@@ -30,7 +35,7 @@ class Logger():
         msg : str
             Mensaje de registro para el nivel debug
         """
-        logging.debug(msg)
+        self.milogger.debug(msg)
     
     def info(self, msg : str):
         """
@@ -41,7 +46,7 @@ class Logger():
         msg : str
             Mensaje de registro para el nivel info
         """
-        logging.info(msg)
+        self.milogger.info(msg)
 
     def warning(self, msg : str): 
         """
@@ -52,7 +57,7 @@ class Logger():
         msg : str
             Mensaje de registro para el nivel warning
         """
-        logging.warning(msg)
+        self.milogger.warning(msg)
 
     def error(self, msg : str):
         """
@@ -63,7 +68,7 @@ class Logger():
         msg : str
             Mensaje de registro para el nivel error
         """
-        logging.error(msg)
+        self.milogger.error(msg)
 
     def critical(self, msg : str):
         """
@@ -74,4 +79,4 @@ class Logger():
         msg : str
             Mensaje de registro para el nivel critical
         """
-        logging.critical(msg)
+        self.milogger.critical(msg)
